@@ -9,3 +9,7 @@ __pycache__/
 data/raw/
 data/raw/openml/
 
+
+# Generated artifacts (do not commit)
+results/models/
+results/predictions/
