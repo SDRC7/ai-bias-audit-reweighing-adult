@@ -1,0 +1,11 @@
+{
+  "demographic_parity_difference": 0.047238624160718036,
+  "demographic_parity_ratio": 0.5491987063669871,
+  "equalized_odds_difference": 0.02407897485897348,
+  "equalized_odds_ratio": 0.840560947922911,
+  "n_test": 9769,
+  "groups_present": [
+    0,
+    1
+  ]
+}
