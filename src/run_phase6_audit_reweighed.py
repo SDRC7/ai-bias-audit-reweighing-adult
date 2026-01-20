@@ -21,7 +21,7 @@ def main():
     ensure_dir("reports/figures")
 
     # Load predictions CSV from Phase 2
-    path = "results/predictions/baseline_test_preds.csv"
+    path = "results/predictions/reweighed_test_preds.csv"
     df = pd.read_csv(path)
 
     required_cols = ["y_true", "y_pred", "y_prob", "sex_bin"]
@@ -57,7 +57,7 @@ def main():
     sel_df = selection_by_group.rename("selection_rate").reset_index()
     first_col = sel_df.columns[0]
     sel_df = sel_df.rename(columns={first_col: 'sex_bin'}).sort_values('sex_bin')
-    sel_df.to_csv("results/metrics/baseline_group_selection_rates.csv", index=False)
+    sel_df.to_csv("results/metrics/reweighed_group_selection_rates.csv", index=False)
 
     # Plot: selection rate by group
     plt.figure(figsize=(6, 4))
@@ -67,7 +67,7 @@ def main():
     plt.ylabel("Selection rate (P(y_pred=1))")
     plt.title("Baseline: Selection rate by group")
     plt.tight_layout()
-    plt.savefig("reports/figures/baseline_selection_rate_by_group.png", dpi=200)
+    plt.savefig("reports/figures/reweighed_selection_rate_by_group.png", dpi=200)
     plt.close()
 
     # Scalar fairness metrics
@@ -85,7 +85,7 @@ def main():
         "groups_present": sorted(list(set(sex_bin.tolist()))),
     }
 
-    with open("results/metrics/baseline_fairness_metrics.json", "w") as f:
+    with open("results/metrics/reweighed_fairness_metrics.json", "w") as f:
         json.dump(fairness, f, indent=2)
 
     # Plot: fairness metrics
@@ -102,7 +102,7 @@ def main():
     plt.xticks(rotation=25, ha="right")
     plt.title("Baseline: Fairlearn fairness metrics")
     plt.tight_layout()
-    plt.savefig("reports/figures/baseline_fairness_metrics.png", dpi=200)
+    plt.savefig("reports/figures/reweighed_fairness_metrics.png", dpi=200)
     plt.close()
 
     print("Phase 3 complete.")
