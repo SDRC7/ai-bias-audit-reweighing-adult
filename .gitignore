@@ -14,3 +14,4 @@ data/raw/openml/
 results/models/
 results/predictions/
 DEMO.md
+.DS_Store
